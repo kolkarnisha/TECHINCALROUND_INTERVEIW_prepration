@@ -1,1 +1,34 @@
 # TECHINCALROUND_INTERVEIW_prepration
+print("Hello, World!")
+#simple caluclator
+# Take input from user
+a = int(input("Enter first number: "))
+b = int(input("Enter second number: "))
+
+print("Sum:", a + b)
+print("Difference:", a - b)
+print("Product:", a * b)
+print("Quotient:", a / b)
+#odd or even
+num = int(input("Enter a number: "))
+
+if num % 2 == 0:
+    print("Even")
+else:
+    print("Odd")
+#factorial finder
+n = int(input("Enter a number: "))
+factorial = 1
+
+for i in range(1, n + 1):
+    factorial *= i
+
+print("Factorial:", factorial)
+#fiibbinoci sequence
+n = 10  # first 10 numbers
+a, b = 0, 1
+
+print("Fibonacci sequence:")
+for i in range(n):
+    print(a, end=" ")
+    a, b = b, a + b
