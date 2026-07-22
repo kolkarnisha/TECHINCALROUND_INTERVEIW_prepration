@@ -1,0 +1,410 @@
+Conditional Statements in Python (The Decision-making Brain of Software) - imp for Interns
+
+A conditional statement allows the program to execute different actions based on conditions(guardrails) -> If something is true, do this else do this
+
+Because without conditions - software cannot:
+- validate logins (mobile/laptop authentication, suggestion when battery <10 and<20)
+- check eligibility (voting cards >=18, Loans, marks credit score..)
+- recommend products (YT, insta recommendation based on watched category-sport,education, Devotee,shopping..)
+- filter AI responses (keeping conditions in AI prompts for diff result)
+- automate workflows(copilot agent mode asking permission 'allow' to do action)
+
+Conditional statements are how backend software makes decisions
+Ask these QUESTIONS to yourself SPARK/Interns
+- How does Instagram reject wrong passwords?
+- How does Swiggy decide delivery availability?
+- How does ChatGPT filter unsafe prompts?
+- How does LinkedIn recommend jobs? - All intelligent software runs on conditions kadaa
+
+ Software                    Condition            
+ Instagram login        | if password correct  
+ Swiggy delivery        | if restaurant open   
+ Netflix recommendation | if user likes action 
+ Internship eligibility   | if CGPA >= 7         
+ AI chatbot             | if prompt valid    
+
+Condition Check (==, >,>=,<,<=,!=, and , or, not)
+      |
+True or False
+      |
+Action Taken (printing result)
+
+ Statement          Purpose  enti                   
+ if           | check condition(True condition only give result)            
+ if-else      | choose between two actions (True-if, False-else)   
+ if-elif-else | multiple conditions          
+ nested if    | conditions inside conditions 
+
+1. IF CONDITION: Executes code ONLY if condition is true otherwise result is nothing 
+# Basic Syntax
+if condition:
+    statement
+
+# Example
+age = int(input("Enter your age") # variable, integer datatype (Can also give int user input)
+age =20
+if age >= 18: 
+''' if means checking
+>= means comparison
+result becomes True or False
+: starts conditional block '''
+
+    print("Eligible for Algonex Internship") # indentation, block execution, action happens only if condition True
+
+print(20 >= 18) # True
+print(10 >= 18) #  conditions return boolean value False
+
+SOFTWARE DECISION FLOW with Instagram Login Example
+# Pseudocode
+IF password correct
+    Login success
+ELSE
+    Reject login
+
+# Python Code
+password = 1234
+if password == "1234":
+    print("Login Successful")
+
+2. ELSE - (When if condition becomes False?) - Else is for two possible outcomes(True/False)
+Check condition
+      |
+True ? -> Login Successful 
+False ? -> Login failed
+
+# Syntax
+if condition:
+    # runs when condition is True
+else:
+    # runs when condition is False
+
+#eXAMPLE
+cgpa = 6
+if cgpa >= 7:
+    print("Eligible")
+else:
+    print("Not Eligible")
+
+# Most common mistake
+is_eligible = 25
+# WRONG — redundant comparison to True
+if is_eligible == True:
+    ...
+# RIGHT — booleans are already True/False
+if is_eligible:
+    ...
+
+3. elif(if-elif-else) - As a real software has multiple outcomes
+if / elif / else: More than two outcomes, Python checks top to bottom — FIRST True wins then Rest are skipped
+Mana real systems rarely have only: yes/no decisions
+Usually:
+- multiple categories, multiple outcomes untaay so elif vaadali to deal with multiple conditions
+
+Golden rule: Once a condition is True, the remaining elif/else blocks are completely ignored. Order matters — put the strictest condition first
+
+Example: Excellent, Good, Average, Fail categories based on Marks
+marks = float(input("Enter your marks"))
+if marks >= 90:
+    print("Excellent")
+elif marks >= 75 and marks<90:
+    print("Good")
+elif marks<75 and marks>=50:
+    print("Average")
+else:
+    print("Needs Improvement")
+
+# QUESTION For Interns
+marks = 80
+if marks >= 90:
+    print("A")
+elif marks >= 70:
+    print("B")
+elif marks>55:
+    print('D')
+else:
+    print("C")
+
+and: ALL conditions must be True even One False makes the whole thing False
+
+# Syntax
+if condition_A and condition_B and condition_C:
+    # only runs when A, B, and C are ALL True
+# Real example from the project
+cgpa       = 7.8
+backlogs   = 0
+Sem_Fees = 0
+attendance = 82
+hallticket = True
+# All three must pass
+if cgpa >= 7.0 and backlogs == 0 and attendance >= 75 and hallticket:
+    print("Eligible for campus Sem exam")
+else:
+    print("One or more criteria not met")
+
+# For OR conditions
+True or True -> True
+True or False -> True
+False or True -> True
+False or False -> False
+
+Golden rule:
+if the FIRST condition is False, Python skips the rest immediately for efficient codes
+
+cgpa = float(input("Enter cgpa"))
+attendance = float(input("ENter attendance"))
+backlogs = 0
+sem_fees = 0
+hall_ticket = True
+permission = True
+
+if attendance >=75 and backlogs == 0 or sem_fees == 0:
+          print("You're allowed for exam")
+elif permission:
+          print("Allowed on permission")
+else:
+          print("You're not allowed")
+
+# Most common mistake
+# If cgpa check fails, Python does NOT evaluate the rest
+if cgpa >= 7.0 and backlogs == 0 and skills_check():
+    ...  # skills_check() never called if cgpa fails
+
+4. or: ANY one condition being True is enough -> All False = False
+Syntax:
+if condition_A or condition_B:
+    # runs when A is True, OR B is True, OR both
+
+# Real example from the project
+projects   = 2
+internship = 4
+# Either one qualifies you
+if projects >= 5 or internship >= 3:
+    print("Strong profile — apply for senior role")
+else:
+    print("Build more projects or get more experience")
+
+# Example
+if cgpa>=9 or attendance <= 60:
+      print("Your're detained")
+else:
+      print("You're promoted") 
+
+Golden rule:  if the FIRST condition is True, Python skips the rest
+
+# Common mistake
+if skill == "Python" or "SQL":    # WRONG! "SQL" alone is always truthy
+    ...
+if skill == "Python" or skill == "SQL": # RIGHT
+    ...
+# OR better:
+if skill in {"Python", "SQL"}:
+    print(".....")
+
+# not: Flip a boolean(True becomes False, False becomes True)
+# Syntax
+if not condition:
+    # runs when condition is False
+
+# Real example from the project
+backlogs     = int(input("Enter no. of backlogs"))
+has_backlogs = backlogs > 0    # False
+
+if not has_backlogs:            # not False = True
+    print("Clean record — no backlogs")
+
+# Real use: guard clause
+skills = {"Python", "SQL"}
+if "Docker" not in skills:      # 'not in' is one operator
+    print("Add Docker to your skillset")
+
+Golden rule: 'not in' is a single membership operator, not 'not' applied to 'in'
+-> Prefer 'not in' over 'not x in y' — it's cleaner and reads like English.
+
+# Most common mistake
+# AVOID double negatives — hard to read kadaa
+if not student not in rejected_list:
+    ...
+
+# BETTER — flatten the logic anthee
+if student in accepted_list:
+    ...
+
+# in / not in: Check if a value exists inside a collection (list, tuple, set, dict, string)
+
+# Syntax
+- value in collection      # True if value is present
+- value not in collection  # True if value is absent
+
+#Real example from the project
+skills        = {"Python", "Git", "SQL"}
+platform  =   "Algonex IT Solutions"
+dream_cos     = ["Freshworks", "Zoho"]
+
+print("Python" in skills)         # True  — set
+print("Zoho" in dream_cos)        # True  — list
+print("IT" in platform)          # True  — string
+
+# Practical: check all required skills
+if required.issubset(skills):     
+    print("All required skills present")
+
+Golden rule: On a dict, 'in' checks KEYS only, not values
+-> For O(1) lookup, prefer sets over lists — 'in' on a large list is slow.
+
+6. Ternary expression: (Advancement of if-else)
+-> Assign one of two values based on a condition — all in one line
+
+# Syntax raskondi
+result = value_if_true  if  condition  else  value_if_false
+
+# Real example from the project
+cgpa     = 7.8
+backlogs = 0
+
+# One-line assignment cheyandiii
+status  = "PASS"  if cgpa >= 6.0  else "FAIL"
+clean   = "Clean" if backlogs == 0 else f"{backlogs} backlogs"
+strength = "Strong" if cgpa >= 8.0 else ("Average" if cgpa >= 7.0 else "Weak")
+strength = "Strong" if cgpa >= 8.0 else ("Average" if cgpa >= 7.0 and backlogs==0 else "Weak")
+
+print(f"Status   : {status}")    # PASS
+print(f"Backlogs : {clean}")     # Clean
+print(f"Profile  : {strength}")  # Average
+
+# Common in f-strings
+print(f"{'Shortlisted' if cgpa >= 8.0 else 'Eligible'}")
+Golden rule: Use ternary for simple label/value assignments. If the logic is complex or needs side effects (like print()), use a full if/else block instead.
+
+# Most common mistake
+# AVOID — nested ternary beyond 2 levels is unreadable
+result = "A" if x>90 else "B" if x>75 else "C" if x>60 else "F"
+
+# BETTER — use if/elif/else for 3+ outcomes
+if x > 90:   result = "A"
+elif x > 75: result = "B"
+elif x > 60: result = "C"
+else:        result = "F"
+
+4. NESTED IF - Condition inside another condition (if inside another if /if-else inside another if-else) 
+=> A condition inside another condition. Use when Stage 2 only makes sense if Stage 1 passed
+# Syntax
+if outer_condition:
+    # outer is True
+    if inner_condition:
+        # both outer AND inner are True
+    else:
+        # outer True, inner False
+else:
+    # outer is False — inner never checked
+
+
+# Example usecases chudandi :
+- authentication systems
+- permissions
+- AI filtering
+- multi-step validation
+
+if number_sim in phone:
+      print("login Gpay/phone/any UPI")
+   if password = exist_password:
+      print("Open UPI")
+
+# Example:
+cgpa = 8
+skills = "Python"
+if cgpa >= 7:
+    if skills == "Python":
+        print("Eligible for AI Internship")
+
+# Example-2: Nested-if
+mobile_lock = str(input("Enter main passoword")) #7702
+App_password = str(input("Enter main passoword")) # 027
+if mobile_lock="7702":
+      if App_password == "0277":
+           print("Open your mobile")
+else:
+      print("Incorrect Password")
+
+# Inkoo Example
+eal example from the project
+
+cgpa     = 7.8
+backlogs = 0
+skills   = {"Python", "SQL"}
+required = {"Python", "SQL"}
+
+# Three-stage gate — each only runs if previous passed
+if cgpa >= 7.0:
+    print("Stage 1 PASS — CGPA ok")
+    if backlogs == 0:
+        print("Stage 2 PASS — No backlogs")
+        if required.issubset(skills):
+            print("Stage 3 PASS — Skills ok")
+            print("ELIGIBLE")
+        else:
+            missing = required - skills
+            print(f"Stage 3 FAIL — Missing: {missing}")
+    else:
+        print("Stage 2 FAIL — Has backlogs. Stop here")
+else:
+    print("Stage 1 FAIL — CGPA too low. Stop here")
+# Golden rule: If you can combine conditions with 'and', do it — it's cleaner. Nest only when you need different error messages per stage, or when later checks are expensive and you want to skip them early
+
+# Most common mistake
+# OVER-NESTED — this is just 'and' in disguise
+if cgpa >= 7.0:
+    if backlogs == 0:
+        if attendance >= 75:
+            print("Eligible")
+
+# BETTER — flatten with and
+if cgpa >= 7.0 and backlogs == 0 and attendance >= 75:
+    print("Eligible")
+
+INDENTATION: Python uses indentation for structure
+if True:
+    print("Valid") # Ilaa raayali
+if True:
+print("Valid") # Indentation error - Ilaa vaddu bcz next line anukuntundi
+
+5. Nested if-else (An if-else inside another if-else)
+# Basic Syntax
+if condition:
+   print("Joined Algonex") 
+   if condition:
+         print("Mjr students at Algonex")
+   else: 
+        print("sit and print hello world")
+else:
+   print("Join somwhere and build great future")
+
+# Example: 
+internship = str(input("Enter where you joined for internship"))
+if 
+
+# Login System
+username = input("Enter username: ")
+password = input("Enter password: ")
+
+if username == "admin":
+
+    if password == "1234":
+        print("Login Success")
+
+    else:
+        print("Wrong Password")
+
+else:
+    print("Invalid User")
+
+# Role Recommendation
+cgpa = float(input("Enter CGPA: "))
+
+if cgpa >= 9:
+    print("AI Engineer")
+
+elif cgpa >= 7:
+    print("Backend Developer")
+
+else:
+    print("Skill Improvement Required")
