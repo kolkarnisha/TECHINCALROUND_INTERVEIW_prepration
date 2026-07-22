@@ -1,0 +1,630 @@
+Loops in Python
+
+Let's START WITH A REAL PROBLEM: Why loops exist?
+What if Algonex has 500 students? 
+Will you write:
+print("Vamsi Priya")
+print("Jaswanth")
+print("Indumathi") -> until 500 times? -> Obviously Nooo right 
+
+Loop antee: repeating tasks automatically -> That's it
+
+Realworld LOOPS usecases:
+ Software                 Loop Usage               
+ Instagram/YT feed    | loading posts repeatedly 
+ YouTube           | displaying videos        
+ AI chatbot        | processing tokens        
+ Attendance system | checking students        
+ Backend APIs      | processing records       
+
+ Part              Meaning                   
+Start     | where repetition begins   
+ Condition | when repetition continues 
+ Update    | changing value in each cycle 
+
+VISUAL FLOW of LOOPS:
+Start
+  |
+Condition Check
+  |
+Execute Code
+  |
+Update(Increment/Decrement)
+  |
+Repeat
+
+# Ikkada Problem
+-> Humans hate repetitive work
+-> Computers are excellent at repetitive work
+-> Loops were invented to automate repetition
+
+# Here a loop is a programming structure that repeatedly executes a block of code until a condition is satisfied
+Instagram
+Show Post 1
+Show Post 2
+Show Post 3
+... -> Loop
+
+YouTube
+Load Video
+Load Video
+Load Video -> Loop
+
+Attendance System
+Check Student 1
+Check Student 2
+Check Student 3 -> Loop
+
+AI Resume Analyzer
+Read Resume
+Analyze Resume
+Generate Score # Repeated for thousands of resumes -> Loop
+
+In industry, loops are not about printing numbers
+Loops are about:
+- Processing thousands of records
+- Reading database rows
+- Validating users
+- Automating tasks
+- Processing API responses
+- Monitoring servers
+- Analyzing data
+- Training ML models
+A loop antee simply: "Keep doing something until the work is finished" -> That's automation
+
+Two Main Types of LOOPS:
+1. for LOOP: If number of repetitions/range/end point is known already
+syntax:
+for variable in iterable:
+        print(variable)
+
+Ex: for i in range(5): # range(start, stop)
+         print("Batch-2 Jaswanth bagunnara")
+
+# Used when we know what we are iterating over
+for item in collection:
+    do_work()
+
+# Output:
+Hello
+Hello
+Hello
+Hello
+Hello
+
+numbers # Ilaa print avuthundi..
+│
+├── 10
+├── 20
+└── 30
+
+Visually:
+Start
+ |
+i=0
+ |
+Execute
+ |
+i=1
+ |
+Execute
+ |
+...
+ |
+Stop
+
+Ex: for i in range(0, 5):
+         print(i)
+''' for antee: repeat process
+    i: Loop variable -> Stores current value
+range(5): Generates numbers: 0 1 2 3 4
+OUTPUT intheena?
+0
+1
+2
+3
+4 '''
+
+Que for Interns: How does YouTube display 100 videos? Using loops
+Ex: Ajay_Playzz = ["gaming.mp4", "ajay_jugat.mp3", "Ajay_play.mp4"]
+for i in Ajay_Playzz:
+    print(i)
+
+Beast_YT_Channel = ["car_launch.mp4", "hjagshj.png", "food_money.mp3".....]
+for i in Beast_YT_Channel:
+     print(i)
+
+fruits = ['apple', 'banana', 'Lichi', 'Jackfruit']
+for i in fruits:
+    print(i)
+
+## range() Function in Loops
+for i in range(5): # range(stop)
+    print(i) 
+
+## range(start, stop) # Here stop = stop-1
+for i in range(1,6):
+    print(i)
+
+## range(start, stop, step)
+for i in range(0,11,2):
+    print(i)
+
+# Run loop in range()
+L = [11,23,2,3,23,21,32,2]
+for i in range(len(L)):
+          print(i)
+    
+# Run loop in list      
+L = [11,23,2,3,23,21,32,2]
+for i in L:
+          print(i)
+
+=> Let's run all the Datatypeas through Loops Interns and SPARK
+
+employees = [
+    {"name":"Ganesh","salary":50000},
+    {"name":"Rahul","salary":60000},
+    {"name":"John","salary":70000}
+]
+
+for emp in employees:
+    print(emp["name"]) # Exactly how HR software processes records
+
+2. while LOOP: repetitions depend on condition
+Example: 
+count = 1
+while count <= 5:
+    print(count)
+    count += 1
+
+Step 1:
+count = 1 # Starting value
+Step 2:
+while count <= 5: #Condition checked repeatedly
+Step 3:
+count += 1 # Update value
+Without update: infinite loop (run chesii chudhamaa)
+count = 1 - print
+count = 2 - print
+count = 3 - print
+... infinte
+
+For SPARK: How does Instagram keep scrolling until user stops?
+-> Loops are what allow software to handle scale without writing repeated code for automation
+Without loops:
+- no feeds
+- no analytics
+- no AI processing
+- no backend systems
+
+Types of Looping through LIST, TUPLE, SET, DICT:
+# LIST LOOPING
+students = ["Jyoshna",232 "Anu",[1,23,34,3],True,23.25]
+for student in students:
+    print(student)
+
+# SET LOOPING
+skills = {"Python", "AI", "SQL"}
+for skill in skills:
+    print(skill)
+
+# TUPLE LOOPING
+data = ("Rahul", 21, "AI")
+for value in data:
+    print(value)
+
+data = ('Heena', 32, 90.5, False)
+# print(data)
+for i in data:
+          print(data)
+          print(i)
+
+# DICTIONARY LOOPING
+student = {
+    "name": "Rahul",
+    "cgpa": 8.5
+}
+for key, value in student.items():
+    print(key, value)
+
+for key in employee:
+    print(key)
+
+for value in employee.values():
+    print(value)
+
+for p,q in hero.items():
+        print(p, ":",q)
+print(hero)
+
+## enumerate() - Used when index is needed
+students = ["A","B","C"]
+for index,student in enumerate(students):
+    print(index,student)
+
+students = {"A":23,"B":23232,"C":4564}
+for T,S in enumerate(students):
+    print(T,S)
+
+
+4. LOOPs through CONTROL STATEMENTS
+1. break: It Stops/terminate loop completely when condition met
+Example: 
+attempts =0
+for i in range(10):
+    if attempts > 3:
+        print("Wait for 30 seconds")
+        break
+    attempts += 1
+    print(attempts)
+Real usecases: login attempt limits
+- stopping fraud search
+-> terminating process
+
+2. continue: It Skips the current iteration and moves to next element
+Ex: for i in range(5):
+    if i <=7 and i in ["Fail",'Pass']:
+        continue
+    print(i)
+# REAL USE enti?:
+- skipping invalid records
+- filtering data
+
+3. pass: It is Just a Placeholder in Python
+if True:
+    pass
+
+3. NESTED LOOPS (Writing loop iteration in another iteration loop) - The Topic That Separates Beginners from Problem Solvers
+Most students know:
+for i in range(5):
+    print(i) # single loop nowhere useful in projects
+
+### But real software often deals with:
+Multiple Students
+   Multiple Subjects
+
+Multiple Orders
+   Multiple Products
+
+Multiple Departments
+   Multiple Employees
+
+Multiple Customers
+   Multiple Transactions -> This is where Nested Loops come in Interns
+Nested Loop? - A loop inside another loop
+Every patternloo ilaane untundi::
+Rows -> Outer Loop
+Columns -> Inner Loop
+
+Syntax:
+for row in range(...):
+    for col in range(...):
+# Example:
+for i in range(3):
+    for j in range(2):
+        print(i,j)
+Output:
+0 0
+0 1
+
+1 0
+1 1
+
+2 0
+2 1
+
+Visual Understanding::
+Outer Loop: i = 0
+
+Inner Loop runs completely:
+j = 0
+j = 1
+
+Then: i = 1
+Inner Loop runs again:
+j = 0
+j = 1
+Then: i = 2 # Inner Loop runs again
+
+Golden Rule:: For every 1 iteration of Outer Loop, the Inner Loop executes completely
+
+Think:
+Outer Loop → Manager
+Inner Loop → Employees
+Elaa antee Whenever a manager is processed, all employees under him are processed
+
+Real-Time Example 1: Student Marks System
+students = ["Rahul","Anu","Kiran"]
+subjects = ["Python","SQL","AI"]
+
+Need:
+Rahul - Python
+Rahul - SQL
+Rahul - AI
+
+Anu - Python
+Anu - SQL
+Anu - AI
+
+Kiran - Python
+Kiran - SQL
+Kiran - AI
+
+Solution entantee:
+students = ["Rahul","Anu","Kiran"]
+subjects = ["Python","SQL","AI"]
+
+for student in students:
+    for subject in subjects:
+        print(student,"-",subject)
+Each Student -> Every Subject -> Nested Loop
+
+Real-Time Example 2: E-Commerce System
+Amazon Order example chudandi:
+Order 1
+    Product A
+    Product B
+
+Order 2
+    Product C
+    Product D
+
+orders = {
+    "ORD001":["Laptop","Mouse"],
+    "ORD002":["Mobile","Headphones"] }
+
+for order,products in orders.items():
+    print(order)
+    for product in products:
+        print("  ",product)
+
+## Using List
+orders=[
+    ["product A","product B"],
+    ["product C","oduct D"]
+]
+for i in  range(len(orders)):
+    print("order",i+1)
+    for product in orders[i]:
+        print(" ",product)
+
+### Real-Time Example 3: Employee Management
+Companyloo:
+HR
+    Employee1
+    Employee2
+IT
+    Employee3
+    Employee4
+departments = {"HR":["Rahul","Anu"],
+    "IT":["Kiran","Ravi"] }
+# Ikkada deeniki solution enti?
+for dept,employees in departments.items():
+    print("Department:",dept)
+    for emp in employees:
+        print(emp)
+# Output:
+Department: HR
+Rahul
+Anu
+
+Department: IT
+Kiran
+Ravi
+
+Ex: Each student has multiple skills
+students = [
+    ["Chithra Avula", "Python"],
+    ["Aneesha", "SQL"]
+]
+
+for i in students:
+    for value in i:
+        print(value)
+
+# Examples on LOOPS:
+students = []
+for i in range(3):
+    name = input("Enter student name: ")
+    students.append(name)
+
+for student in students:
+    print(student)
+
+skills = ["Python", "SQL", "AI"]
+for skill in skills:
+    if skill == "Python":
+        print("AI Eligible")
+        continue
+
+## Most Common Use Case: Matrix Pattern Printing
+matrix = [               
+    [1,2,3],          1 2 3
+    [4,5,6],          4 5 6
+    [7,8,9] ]         7 8 9
+# Access every element
+for row in matrix:
+    for value in row: # row =[1,2,3]
+        print(value)
+# output
+1
+..
+..
+9
+
+# Python Pattern Programming
+for row in range(5):                             * * * * *
+    for col in range(5):                         * * * * *
+          print("*",end=" ")                     * * * * *
+    print()                                      * * * * *
+# Outer Loop: Rows                               * * * * *
+Inner Loop:Columns                                                 
+
+# Pattern 2
+for i in range(1,6):                           *
+    for j in range(i):                         * *
+        print("*",end=" ")                     * * *
+    print()                                    * * * *
+                                               * * * * *
+# Pattern 3: Reverse Triangle
+for row in range(5,0,-1):                      * * * * *
+    for col in range(row):                     * * * *            
+        print("*", end=" ")                    * * *
+    print()                                    * * 
+                                               *                                                         
+# Pattern 4: Number Triangle                                           
+for row in range(1,6):                        1
+    for col in range(1,row+1):                1 2 
+        print(col,end=" ")                    1 2 3 
+    print()                                   1 2 3 4 
+                                              1 2 3 4 5
+# Pattern 5: Repeated Row Number
+1                     for row in range(1,6):
+2 2                      for col in range(row):
+3 3 3                          print(row,end=" ")
+4 4 4 4                  print()
+5 5 5 5 5
+
+# Pattern 6: Floyd's Triangle
+1                         num = 1
+2 3                       for row in range(1,6):
+4 5 6                         for col in range(row):
+7 8 9 10                          print(num,end=" ")
+11 12 13 14 15                    num+=1
+                              print()
+n=1
+for i in range(1,int(input())+1):
+     for j in range(i):
+          print(n,end=' ')
+          n+=1
+     print()
+
+# Pattern 7: Alphabet Triangle(chr(65) - 'A')
+A                 for row in range(1,6):
+A B                   for col in range(row):    
+A B C                      print(chr(65+col),end=" ")
+A B C D               print()
+A B C D E
+ # For smallercase letters (Start from 97 - chr(97) -'a')
+for row in range(1,6):
+          for col in range(row):    
+                    print(chr(97+col),end=" ")
+          print()
+
+# Pattern 8: Inverted Number Triangle
+1 2 3 4 5             for row in range(5,0,-1):
+1 2 3 4                   for col in range(1,row+1):
+1 2 3                          print(col,end=" ")
+1 2                       print()
+1
+
+# Pattern 9: Pyramid
+    *                  rows = 5
+   ***                 for row in range(rows):
+  *****                    print(" "*(rows-row-1),end="")
+ *******                   print("*"*(2*row+1))
+*********
+
+# Pattern 10: Diamond
+# Upper Half - Pyramid
+rows = 5                                                        *
+for row in range(rows):                                        ***
+    print(" "*(rows-row-1),end="")                            *****
+    print("*"*(2*row+1))                                     *******
+                                                            *********
+ # Lower Half - Inverted Pyramid                             *******
+for row in range(rows-2,-1,-1):                               *****
+    print(" "*(rows-row-1),end="")                             ***
+    print("*"*(2*row+1))                                        *                                                                                                                                       
+
+### 5-Step Formula To Solve Any Pattern
+Step 1: Count Rows -> How many lines?
+Step 2: Find Column Logic -> How many symbols per row?
+Step 3: Identify Trend -> Increasing? / Decreasing? /Constant?
+Step 4: Build Outer Loop
+for row in range(...):
+Step 5: Build Inner Loop
+for col in range(...):
+
+# students = [
+    ["Python","SQL"],
+    ["Java","AI"],
+    ["PowerBI","Excel"] ] # Need to check every skill
+
+for student_skills in students:
+    for skill in student_skills:
+        print(skill)
+
+for i in range(3):
+    for j in range(4):
+        print(i,j)
+
+# Outer Loop: 3 Times
+# Inner Loop: 4 Times
+# Total: 3 × 4 = 12
+
+# Time Complexity Insight
+for i in range(n):
+    for j in range(n): # Complexity: O(n²)
+
+Practice Questions for Python learners:
+1./ Print a 5×5 star pattern.
+2. Print multiplication tables from 1 to 10.
+3. Print all students and their subjects.
+4. Count total products in all orders.
+5.Find highest mark among all students.
+6. Print matrix row-wise.
+7.Print matrix column-wise.
+8.Create attendance report for 5 students across 7 days.
+9.Generate employee report department-wise.
+10.Build a mini marksheet system using nested loops.
+
+The Mental Model gurthupetkoo chaalu:
+Whenever you see:               Think like:
+One thing                          Outer Loop
+    contains many things               Inner Loop
+
+Examples:
+Students
+    Subjects
+
+Orders
+    Products
+
+Departments
+    Employees
+
+Customers
+    Transactions
+
+Rows
+   Columns
+
+Industry Usecases::Where do we use patterns in real life? -> Not directly for stars
+#Excel Sheets
+Rows
+Columns
+# Database Tables
+Rows
+Columns
+# AI Datasets
+Rows
+Columns
+Features
+# Matrix Operations
+Row-wise Processing
+Column-wise Processing
+### All of these use the same nested-loop thinking learned from pattern printing
+
+# Mee mobile Login Attempts System
+attempts = 1
+while attempts <= 3:
+    password = input("Enter that sweet password: ")
+
+    if password == "1234":
+        print("Login Successful ayindi")
+        break
+    else:
+        print("enti password marchipoyaava?")
+    attempts += 1
