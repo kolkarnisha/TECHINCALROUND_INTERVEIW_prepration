@@ -1,0 +1,11 @@
+Time and Space Complexity
+Time Complexity?: describes how the number of operations grows as the input size grows
+-> Time complexity measures how the running time of an algorithm increases as the input size n increases
+-> Space complexity measures how much additional memory an algorithm requires as n increases
+
+ O(1)       | Constant     | Accessing arr[0]            
+ O(log n)  | Logarithmic  | Binary search                  
+ O(n)       | Linear       | One loop through an array      
+ O(n log n) | Linearithmic | Merge sort                     
+ O(n²)      | Quadratic    | Two nested loops               
+ O(2ⁿ)      | Exponential  | Some recursive subset problems 
