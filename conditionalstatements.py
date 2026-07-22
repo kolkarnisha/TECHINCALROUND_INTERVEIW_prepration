@@ -37,11 +37,27 @@ elif x > 5 or y > 15:
 else:
     print("Neither")
 #truthy or falsy
-if 0: print("A")
-if "": print("B")
-if None: print("C")
-if "hello": print("D")
-if 1: print("E")
+# if 0: print("A")
+# if "": print("B")
+# if None: print("C")
+# if "hello": print("D")
+# if 1: print("E")
+if 0:
+    print("A")   # Won't run (0 is falsy)
+
+if "":
+    print("B")   # Won't run (empty string is falsy)
+
+if None:
+    print("C")   # Won't run (None is falsy)
+
+hello = "world"  # Define the variable
+if hello:
+    print("D")   # Will run (non-empty string is truthy)
+
+if 1:
+    print("E")   # Will run (1 is truthy)
+
 #nested if
 x = 5
 if x > 3:
