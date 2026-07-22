@@ -9,3 +9,254 @@ Time Complexity?: describes how the number of operations grows as the input size
  O(n log n) | Linearithmic | Merge sort                     
  O(n²)      | Quadratic    | Two nested loops               
  O(2ⁿ)      | Exponential  | Some recursive subset problems 
+
+##O(1) — Constant Time
+numbers = [10, 20, 30, 40]
+print(numbers[0]) #The operation does not depend on the array size
+
+#O(n) — Linear Time
+for number in numbers:
+    print(number) #If there are n numbers, the loop executes n times
+
+#O(n²) — Quadratic Time
+for i in range(len(numbers)):
+    for j in range(len(numbers)):
+        print(numbers[i], numbers[j]) # For n elements, approximately n × n operations occur
+
+# O(log n) — Logarithmic Time - Binary search repeatedly divides the search space into half
+def binary_search(numbers, target):
+    left = 0
+    right = len(numbers) - 1
+    while left <= right:
+        middle = (left + right) // 2
+
+        if numbers[middle] == target:
+            return middle
+        elif numbers[middle] < target:
+            left = middle + 1
+        else:
+            right = middle - 1
+    return -1 # ikkada Time complexity: O(log n)
+
+##O(n log n)
+Efficient sorting algorithms such as merge sort usually take:
+O(n log n)
+Complexity Order
+
+From fastest growth to slowest performance:
+O(1)
+O(log n)
+O(n)
+O(n log n)
+O(n²)
+O(2ⁿ)
+O(n!)
+
+Example 1: One loop
+def print_numbers(numbers):
+    for number in numbers:
+        print(number)
+Ikkada Time complexity: O(n) because the loop executes n times
+Space complexity: O(1) because no extra data structure grows with the input
+
+Example 2: Nested loops
+def print_pairs(numbers):
+    for first in numbers:
+        for second in numbers:
+            print(first, second)
+Time complexity: O(n²) because the inner loop runs n times for every outer-loop iteration
+Space complexity: O(1)
+
+Example 3: Creating a new list
+def double_numbers(numbers):
+    result = []
+    for number in numbers:
+        result.append(number * 2)
+    return result
+Time complexity: O(n)
+Space complexity: O(n) because the result list stores n elements
+
+For time complexity:
+Consecutive loops are added: O(n) + O(n) = O(n)
+Nested loops are multiplied: O(n) × O(n) = O(n²)
+Constants are ignored: O(2n) -> O(n)
+Smaller terms are ignored: O(n² + n + 5) -> O(n²)
+
+########
+print(numbers[5]) # O(1)
+
+for number in numbers:
+    print(number) # O(n)
+
+for i in numbers:
+    for j in numbers:
+        print(i, j) # O(n²)
+
+for i in range(0, len(numbers), 2):
+    print(numbers[i]) #O(n)
+
+i = 1
+while i < n:
+    i *= 2 # O(log n)
+
+#Nested loops do not always mean O(n²)
+for i in range(n):
+    print(i)
+for j in range(n):
+    print(j) #O(n) + O(n) = O(2n) = O(n)
+#It is not O(n²) because the loops are sequential, not nested
+
+####Session 6 — Guided Coding Problems
+Problem 1 — Largest Element
+Input: [4, 8, 2, 10, 6]
+Output: 10
+
+def find_largest(numbers):
+    largest = numbers[0]
+
+    for number in numbers:
+        if number > largest:
+            largest = number
+    return largest
+
+numbers = [4, 8, 2, 10, 6]
+print(find_largest(numbers))
+##Time: O(n)
+Space: O(1)
+
+Problem 2 — Second-Largest Distinct Element
+def find_second_largest(numbers):
+    largest = None
+    second_largest = None
+
+    for number in numbers:
+        if largest is None or number > largest:
+            second_largest = largest
+            largest = number
+        elif number != largest and (
+            second_largest is None or number > second_largest
+        ):
+            second_largest = number
+    return second_largest
+print(find_second_largest([10, 5, 8, 10, 7])) # 0
+##Time: O(n)
+Space: O(1)
+
+##Problem 3 — Reverse an Array
+def reverse_array(numbers):
+    left = 0
+    right = len(numbers) - 1
+
+    while left < right:
+        numbers[left], numbers[right] = numbers[right], numbers[left]
+        left += 1
+        right -= 1
+
+    return numbers
+print(reverse_array([1, 2, 3, 4, 5]))
+
+#Complexity:
+Time: O(n)
+Space: O(1)
+
+###Problem 4 — Check Whether an Array Is Sorted
+def is_sorted(numbers):
+    for index in range(1, len(numbers)):
+        if numbers[index] < numbers[index - 1]:
+            return False
+    return True
+print(is_sorted([1, 2, 3, 5]))
+print(is_sorted([1, 4, 2, 5]))
+
+#Complexity:
+Time: O(n)
+Space: O(1)
+
+#Problem 5 — Count Even and Odd Numbers
+def count_even_odd(numbers):
+    even_count = 0
+    odd_count = 0
+
+    for number in numbers:
+        if number % 2 == 0:
+            even_count += 1
+        else:
+            odd_count += 1
+
+    return even_count, odd_count
+even, odd = count_even_odd([1, 2, 3, 4, 5, 6])
+print("Even:", even)
+print("Odd:", odd)
+
+#Problem 6 — Sum and Average
+def calculate_sum_and_average(numbers):
+    if not numbers:
+        return 0, 0
+
+    total = 0
+    for number in numbers:
+        total += number
+    average = total / len(numbers)
+    return total, average
+total, average = calculate_sum_and_average([10, 20, 30, 40])
+
+print("Sum:", total)
+print("Average:", average) #Meeru must explain why the empty-list check is required.
+
+###Session 7 — OOP Introduction
+Class and Object
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+    def display_details(self):
+        print("Name:", self.name)
+        print("Marks:", self.marks)
+
+    def has_passed(self):
+        return self.marks >= 40
+student1 = Student("Ravi", 85)
+student1.display_details()
+print(student1.has_passed())
+
+Class: A blueprint used to create objects.
+Object: A real instance created from a class.
+Attribute: Data belonging to an object
+
+Examples:
+self.name
+self.marks
+
+Method: A function defined inside a class
+Constructor: The __init__ method that initializes a new object
+self: self refers to the current object
+
+## OOP Coding Task
+Create an Employee class with:
+name
+employee_id
+salary
+A method to display employee details
+A method to calculate annual salary
+
+Expected structure:
+class Employee:
+    def __init__(self, name, employee_id, salary):
+        self.name = name
+        self.employee_id = employee_id
+        self.salary = salary
+
+    def display_details(self):
+        print(self.name, self.employee_id, self.salary)
+    def annual_salary(self):
+        return self.salary * 12
+
+Find the smallest element in an array
+Find the largest and smallest elements together
+Count positive, negative and zero values
+Find the sum of elements at even indexes
+Reverse an array without using reverse()
+Check whether all array elements are unique
+Create a BankAccount class
+Calculate factorial using a function
