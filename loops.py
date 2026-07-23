@@ -204,20 +204,26 @@ for i in range(1, 101):
 print("Sum =", total)
 
 # 𝗟𝗲𝘃𝗲𝗹 𝟮: 𝗟𝗼𝗼𝗽𝘀 + 𝗖𝗼𝗻𝗱𝗶𝘁𝗶𝗼𝗻𝘀
-6. Print numbers divisible by 5 between 1 and 100
-Output:
-5
-10
-15
-...
-100
+# 6. Print numbers divisible by 5 between 1 and 100
+# Output:
+# 5
+# 10
+# 15
+# ...
+# 100
+for i in range(1,100):
+    if i%5==0:
+        print(i)
 
-7. Print numbers divisible by both 3 and 5
-Output:
-15
-30
-45
-...
+# 7. Print numbers divisible by both 3 and 5
+# Output:
+# 15
+# 30
+# 45
+# ...
+for i in range(1,100):
+    if i%3==0 and i%5==0:
+        print(i)
 8. Count how many even numbers exist from 1 to 100
 Expected: 50
 
