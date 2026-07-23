@@ -198,6 +198,10 @@ Output:
 
 # 5. Find sum of numbers from 1 to 100
 Output: 5050
+total = 0
+for i in range(1, 101):
+    total += i
+print("Sum =", total)
 
 # 𝗟𝗲𝘃𝗲𝗹 𝟮: 𝗟𝗼𝗼𝗽𝘀 + 𝗖𝗼𝗻𝗱𝗶𝘁𝗶𝗼𝗻𝘀
 6. Print numbers divisible by 5 between 1 and 100
