@@ -167,6 +167,20 @@ for num in range(1, 21):   # loop from 1 to 20
 
 for num in range(1, 16):   # loop from 1 to 15
     if num == 7:
+#leap year check
+        # Leap year check program
+
+year = int(input("Enter a year: "))
+
+if (year % 400 == 0):
+    print(year, "is a Leap Year")
+elif (year % 100 == 0):
+    print(year, "is NOT a Leap Year")
+elif (year % 4 == 0):
+    print(year, "is a Leap Year")
+else:
+    print(year, "is NOT a Leap Year")
+
         continue           # skip the rest of the loop for this iteration
     print(num)
 
