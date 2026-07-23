@@ -50,3 +50,25 @@ for i in list:
 revrsearray=list[::-1]
 for i in revrsearray:
     print(i)
+list=[1,2,3,4,"s",5,6,7,8,9,10]
+print(len(list))
+list.append("apple")
+print(list)
+print(list[1:5:2])
+# print(list.remove("s"))
+# print(list.pop())
+# # print(list.remove(9))
+# print(list.delete())
+list=[1,2,3,4,"s",5,6,7,8,9,10]
+print(list[2]==100)
+list[3]=200
+print(list)
+list.insert(2,300)
+print(list)
+list.append(1)
+list.extend([10,20,30])
+print(list)
+list.extend([10,20,30])
+print(list)
+list.pop()
+list.pop[0]
