@@ -1,0 +1,51 @@
+I'm a B.Com (Computer Applications) graduate with specialized training in Python Full Stack Development, passionate about building efficient, scalable software solutions.
+
+I have hands-on experience designing MySQL databases, developing REST APIs, and building CRUD applications using Django. My work spans backend logic, database optimization, and frontend integration — translating real-world requirements into clean, functional code.
+
+Projects:
+
+•	Intern Management System — Designed authentication and role-based access with full CRUD operations for intern records; built an efficient portal for registration, updates, search, and deletion using Python and MySQL.
+
+🔗 github.com/kolkarnisha/Algonex_Internmanagement_system-
+
+•	Cafe Startup Management App — Developed a business operations management application covering inventory and customer management, connected to a MySQL database with modular backend architecture. Tech: Python, Django, MySQL, HTML, CSS, JavaScript.
+
+🔗 github.com/kolkarnisha/NISHA-S_CAFE_NEWSATARTUP
+
+•	Fee Balance Check System — Built an employee information management system with CRUD operations, SQL joins for reporting, optimized query execution, and integrated form validation.
+
+🔗 github.com/kolkarnisha/fee-balance-check-in-organizations
+
+•	AP Politics Content Platform — Implemented, integrated, and automated a Python-based web app with database integration, backend logic, and scalable CRUD functionality for content management. Tech: Python, Django, MySQL, HTML, CSS, JavaScript.
+
+🔗 github.com/kolkarnisha/project_on_AP_politics
+
+I'm currently seeking entry-level opportunities as a Software Engineer, Python Developer, or Analyst, where I can contribute my technical skills, grow with a team, and build impactful applications.
+
+ 
+
+Post: Reflections from AgentCon Bengaluru & Microsoft's AI Session
+
+Attended an incredible AI event at Microsoft, Bangalore — where conversations moved beyond the hype and focused on the real impact of AI on jobs, security, and the future workforce.
+
+We are, quite possibly, the first generation working alongside intelligence we've created ourselves.
+
+One takeaway stayed with me: AI won't replace people who learn continuously — it will empower them.
+
+The future belongs to those who can combine:
+
+Human creativity + AI capability + continuous learning.
+
+Key reflections from the sessions:
+
+•	The AI boom is rapidly reshaping industries and redefining the future of work
+
+•	Continuous learning, adaptability, and responsible innovation will be central to thriving in an AI-driven world
+
+•	In the coming years, the most valuable skill may not be coding alone — but the ability to learn, adapt, and think alongside AI
+
+Grateful for the opportunity to learn from industry experts, connect with professionals, and gain perspective on how AI is transforming businesses globally. Looking forward to growing further in this evolving space.
+
+
+
+
