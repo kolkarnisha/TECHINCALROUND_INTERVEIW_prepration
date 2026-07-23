@@ -129,4 +129,47 @@ if health > 0:
     print("Player alive")
 else:
     print("Game over")
+#fizzbuzz program in python
+# FizzBuzz program in Python
+
+for i in range(1, 31):   # loop from 1 to 30
+    if i % 3 == 0 and i % 5 == 0:
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)
+#prime check in python
+# Prime number check from 1 to 50
+
+for num in range(1, 51):   # loop through numbers 1 to 50
+    if num > 1:            # prime numbers are greater than 1
+        for i in range(2, num):
+            if num % i == 0:
+                print(num, "is not prime")
+                break
+        else:
+            print(num, "is prime")
+    else:
+        print(num, "is not prime")
+#break condition
+# Break loop when number reaches 13
+
+for num in range(1, 21):   # loop from 1 to 20
+    if num == 13:
+        print("Loop stopped at", num)
+        break
+    print(num)
+#continue condition
+# Skip printing number 7 in the loop
+
+for num in range(1, 16):   # loop from 1 to 15
+    if num == 7:
+        continue           # skip the rest of the loop for this iteration
+    print(num)
+
+
+
 
