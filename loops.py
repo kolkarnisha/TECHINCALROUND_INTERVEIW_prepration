@@ -1,48 +1,167 @@
 # 𝗛𝗮𝗻𝗱𝘀-𝗼𝗻 𝗿𝗲𝗮𝗹𝘁𝗶𝗺𝗲𝗹𝗼𝗼 𝗰𝗵𝘂𝘀𝗲𝗲 𝗽𝗿𝗼𝗯𝗹𝗲𝗺𝗲𝘀 𝗮𝗻𝗱 𝗱𝗼𝘄𝗻 𝗮𝗿𝗲 𝘀𝗶𝗺𝗽𝗹𝗲
 
-1. Grade calculator (10 min)
-# if, elif
-Write a function get_grade(marks) that takes a score and returns:
-A+ if marks >= 90, A if >= 80, B if >= 70, C if >= 60, D if >= 50, F otherwise.
-Test with: 95, 82, 71, 55, 45. Print the grade for each
-# Expected: 95 → A+ | 82 → A | 71 → B | 55 → D | 45 → F
-HINT: if/elif chain. Strictest condition first (>= 90). The else catches everything below 50
+# 1. Grade calculator (10 min)
+# # if, elif
+# Write a function get_grade(marks) that takes a score and returns:
+# A+ if marks >= 90, A if >= 80, B if >= 70, C if >= 60, D if >= 50, F otherwise.
+# Test with: 95, 82, 71, 55, 45. Print the grade for each
+# # Expected: 95 → A+ | 82 → A | 71 → B | 55 → D | 45 → F
+# HINT: if/elif chain. Strictest condition first (>= 90). The else catches everything below 50
+# marks=int(input())
+def get_grade():
+    if marks>=90:
+        print("a")
+    elif marks>=80:
+        print("b")
+    elif marks>=70:
+        print("c")
+    elif marks>=60:
+        print("D")
+    else:
+        print("fail")
+get_grade()
+# 2. Internship eligibility filter [10 min] - and, or, not, in
+# A company offers internships with these rules:
+# (a) CGPA >= 7.0 AND no active backlogs, OR
+# (b) CGPA >= 6.5 AND has at least 3 GitHub projects
+# Also: "CSE" or "IT" branch students get priority.
+# Write is_eligible(cgpa, backlogs, projects, branch) and test with 4 different profiles
 
-2. Internship eligibility filter [10 min] - and, or, not, in
-A company offers internships with these rules:
-(a) CGPA >= 7.0 AND no active backlogs, OR
-(b) CGPA >= 6.5 AND has at least 3 GitHub projects
-Also: "CSE" or "IT" branch students get priority.
-Write is_eligible(cgpa, backlogs, projects, branch) and test with 4 different profiles
+cgpa=float(input("enter your cgpa:"))
+backlogs=str(input("enter yes/no for having backlogs: "))
+github=int(input("enter how many projects that your git had:"))
+branch=str(input("enter your branch:"))
+def is_eligible():
+    if backlogs=="no":
+        if cgpa>=7.0:
+            if github>=2:
+                if branch=="it" or branch=="cse":
+                   return "elgible to interveiw"
+    else:
+        return "not elgible"
+is_eligible()
+''' or another way'''
+def is_eligible(cgpa,backlogs,github,branch):
+    cond_a = (cgpa>=7.0 and backlogs=="no")
+    cond_b = (cgpa>=6.0 and github>=2)
+    if cond_a or cond_b:
+        if branch.lower() in ["it","cse"]:
+            return "eligible"
+        else:
+            return "your brach has no priority"
+    else:
+        return "not eligible"
+is_eligible(9.0,"no",7,"cse"
+# Expected: (7.5, 0, 1, CSE) → True | (6.8, 1, 4, MECH) → True | (6.2, 0, 1, IT) → False
+# HINT: Combine (a) and (b) with 'or'. Use 'in' to check branch against a set. Use 'not' for backlog check.
 
-Expected: (7.5, 0, 1, CSE) → True | (6.8, 1, 4, MECH) → True | (6.2, 0, 1, IT) → False
-HINT: Combine (a) and (b) with 'or'. Use 'in' to check branch against a set. Use 'not' for backlog check.
+# 3. Student profile validator[25 min] - truthy, in, ternary, nested
+# # Write validate_profile(student) that checks a student dict and returns a list of issues:
+# - Name must be a non-empty string (truthiness check)
+# - CGPA must be between 0.0 and 10.0 (comparison)
+# - Skills must be a non-empty set (truthiness)
+# - Email must contain '@' and '.' (in + and)
+# - GitHub projects must be 0 or more (comparison)
+# If no issues, print "Profile complete". Otherwise print each issue
 
-3. Student profile validator[25 min] - truthy, in, ternary, nested
-# Write validate_profile(student) that checks a student dict and returns a list of issues:
-- Name must be a non-empty string (truthiness check)
-- CGPA must be between 0.0 and 10.0 (comparison)
-- Skills must be a non-empty set (truthiness)
-- Email must contain '@' and '.' (in + and)
-- GitHub projects must be 0 or more (comparison)
-If no issues, print "Profile complete". Otherwise print each issue
+# Expected: Missing name, invalid CGPA, and missing '@' in email each produce a separate issue string.
 
-Expected: Missing name, invalid CGPA, and missing '@' in email each produce a separate issue string.
+# HINT: Build an empty issues list. Use 'if not name:' for truthiness. Append strings to issues. At the end, 'if issues:' print them, 'else:' print success
+def validate_profile(student):
+    issues = []
 
-HINT: Build an empty issues list. Use 'if not name:' for truthiness. Append strings to issues. At the end, 'if issues:' print them, 'else:' print success
+    # Name must be non-empty (truthiness)
+    if not student.get("name"):
+        issues.append("Missing name")
 
-4. Full company screener [open, if, elif, and, or, not, in, ternary, truthy, nested]
-Build a CLI that:
-1. Takes student profile as input (name, cgpa, backlogs, attendance, skills)
-2. Screens against all 4 companies in the project database
-3. For each company: print PASS/FAIL for each criterion using ternary labels (✓/✗)
-4. At the end, print how many companies they're eligible for
-5. If eligible for none, print specific advice on what to improve (which CGPA to reach, which skills to add)
-Bonus: add a 5th company of your own with custom criteria.
+    # CGPA must be between 0.0 and 10.0
+    cgpa = student.get("cgpa")
+    if not (0.0 <= cgpa <= 10.0):
+        issues.append("Invalid CGPA")
 
-Expected: Open-ended — evaluate on correct logic, readable output, and meaningful advice for the not-eligible case
-Hide hint: Nested if for the screening stages. List comprehension to count eligible companies. Truthiness to check if skills set is non-empty. Ternary for ✓/✗ labels
+    # Skills must be a non-empty set (truthiness)
+    if not student.get("skills"):
+        issues.append("No skills listed")
 
+    # Email must contain '@' and '.'
+    email = student.get("email", "")
+    if "@" not in email or "." not in email:
+        issues.append("Invalid email")
+
+    # GitHub projects must be >= 0
+    projects = student.get("projects")
+    if projects < 0:
+        issues.append("Invalid GitHub projects count")
+
+    # Final output
+    if issues:
+        for issue in issues:
+            print(issue)
+    else:
+        print("Profile complete")
+
+# 4. Full company screener [open, if, elif, and, or, not, in, ternary, truthy, nested]
+# Build a CLI that:
+# 1. Takes student profile as input (name, cgpa, backlogs, attendance, skills)
+# 2. Screens against all 4 companies in the project database
+# 3. For each company: print PASS/FAIL for each criterion using ternary labels (✓/✗)
+# 4. At the end, print how many companies they're eligible for
+# 5. If eligible for none, print specific advice on what to improve (which CGPA to reach, which skills to add)
+# Bonus: add a 5th company of your own with custom criteria.
+
+# Expected: Open-ended — evaluate on correct logic, readable output, and meaningful advice for the not-eligible case
+# Hide hint: Nested if for the screening stages. List comprehension to count eligible companies. Truthiness to check if skills set is non-empty. Ternary for ✓/✗ labels
+def screen_student(student):
+    name, cgpa, backlogs, attendance, skills = (
+        student["name"],
+        student["cgpa"],
+        student["backlogs"],
+        student["attendance"],
+        student["skills"],
+    )
+
+    companies = {
+        "Company A": {
+            "criteria": [
+                ("CGPA >= 7.0", cgpa >= 7.0),
+                ("No backlogs", backlogs == "no"),
+                ("Attendance >= 75%", attendance >= 75),
+            ]
+        },
+        "Company B": {
+            "criteria": [
+                ("CGPA >= 6.5", cgpa >= 6.5),
+                ("At least 1 skill", bool(skills)),
+            ]
+        },
+        "Company C": {
+            "criteria": [
+                ("CGPA >= 8.0", cgpa >= 8.0),
+                ("Attendance >= 80%", attendance >= 80),
+                ("Python in skills", "Python" in skills),
+            ]
+        },
+        "Company D": {
+            "criteria": [
+                ("CGPA >= 6.0", cgpa >= 6.0),
+                ("No backlogs", backlogs == "no"),
+                ("Java in skills", "Java" in skills),
+            ]
+        },
+        # Bonus custom company
+        "Company E": {
+            "criteria": [
+                ("CGPA >= 7.5", cgpa >= 7.5),
+                ("Attendance >= 85%", attendance >= 85),
+                ("AI/ML in skills", any(s in skills for s in ["AI", "ML"])),
+            ]
+        },
+    }
+
+    eligible_count = 0
+
+    print(f"\nScreening results for {name}:\n")
+    for company,
 ### 𝗣𝘆𝘁𝗵𝗼𝗻 𝗟𝗼𝗼𝗽𝘀 + 𝗖𝗼𝗻𝗱𝗶𝘁𝗶𝗼𝗻𝘀 𝗣𝗿𝗮𝗰𝘁𝗶𝗰𝗲 𝗤𝘂𝗲𝘀𝘁𝗶𝗼𝗻𝘀
 ## 𝗟𝗲𝘃𝗲𝗹 𝟭: 𝗕𝗮𝘀𝗶𝗰 𝗟𝗼𝗼𝗽 𝗤𝘂𝗲𝘀𝘁𝗶𝗼𝗻𝘀
 # 1. Print numbers from 1 to 10
