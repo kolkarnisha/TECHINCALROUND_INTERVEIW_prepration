@@ -72,3 +72,12 @@ list.extend([10,20,30])
 print(list)
 list.pop()
 list.pop[0]
+arr=[10,25,40,55]
+new=0
+for i in range(len(arr)):
+    target=arr[i]
+    if arr[i]==40:
+       print("found at",arr.index(arr[i]))
+       target+=5
+print( target)
+
